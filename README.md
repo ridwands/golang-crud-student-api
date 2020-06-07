@@ -1,4 +1,8 @@
 # golang-crud-student-api
+## Go Download Package
+```
+go mod download
+```
 ## Setting Database
 Go To infrastructure/mysql.go, adjust it
 ```
