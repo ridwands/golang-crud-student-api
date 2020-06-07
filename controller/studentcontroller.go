@@ -94,7 +94,7 @@ func Studentone(w http.ResponseWriter, r *http.Request) {
 
 func StudentPost(w http.ResponseWriter, r *http.Request) {
 	var student model.Student
-	// var data []model.Student
+	var data []model.Student
 	var response model.Response
 
 	db := infrastructure.Connect()
@@ -113,8 +113,11 @@ func StudentPost(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
+	data = append(data, student)
+
 	response.Code = 2200
 	response.Message = "success"
+	response.Data = data
 
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(response)
@@ -123,6 +126,7 @@ func StudentPost(w http.ResponseWriter, r *http.Request) {
 
 func StudentUpdate(w http.ResponseWriter, r *http.Request) {
 	var student model.Student
+	var data []model.Student
 	var response model.Response
 
 	db := infrastructure.Connect()
@@ -143,8 +147,11 @@ func StudentUpdate(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
+	data = append(data, student)
+
 	response.Code = 2200
 	response.Message = "success"
+	response.Data = data
 	log.Println("Successfully")
 
 	w.Header().Set("Content-Type", "application/json")
